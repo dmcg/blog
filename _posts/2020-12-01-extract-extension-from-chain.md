@@ -69,7 +69,7 @@ In this case, from `reader` to the end of `lineSequence()`:
 As there will be no uses of the old parameter once the new one is there, it shows that `reader` will be deleted. 
 Accept the refactor.
 
-That might work, but there is a currently a bug in IntelliJ that means that in some cases it doesn't.
+That might work, but there is a currently [a bug in IntelliJ](https://youtrack.jetbrains.com/issue/IDEA-256518) that means that in some cases it doesn't.
 It doesn't work here, leaving us with both parameters and losing the `buffered().lineSequence()` code altogether:
 
 ```kotlin
