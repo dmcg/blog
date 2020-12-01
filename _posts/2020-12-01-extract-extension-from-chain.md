@@ -179,3 +179,13 @@ Helpfully the three new extracted functions look like they are more generally ap
 
 This refactoring is taken from an example in _Java to Kotlin, A Refactoring Guidebook_, by Nat Pryce and me, due to be published in 2021 by O’Reilly. 
 If you like it, you can read more work in progress on [O'Reilly Online Learning](https://learning.oreilly.com/library/view/java-to-kotlin/9781492082262/).
+
+PS - [Vesa Marttila](https://twitter.com/ponzao) points out that we are using a `Reader` here without closing it.
+The `Sequence` returned by `Reader.asLineSequence()` makes no attempt to close the `BufferedReader`, even if it is read to the end.
+I usually work on the principle that whoever creates a resource which might leak should dispose of it, but that isn't the `BufferedReader` in this case, as that doesn't itself hold any resources. At some level, this code should probably be surrounded in a block like
+
+```kotlin
+FileReader(filename).use { reader ->
+    ...
+}
+```   
