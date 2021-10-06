@@ -1,4 +1,22 @@
-# Bootstrap
+# Docker
+
+This now (2021-09-29) works with Docker.
+
+
+```bash
+# In site
+docker pull jekyll/jekyll
+export JEKYLL_VERSION=3.8
+docker run --rm -t  --volume="$PWD:/srv/jekyll"  -p 4000:4000   jekyll/jekyll jekyll serve
+```
+
+It seems to re-download all the gems every time, but that will do for now
+
+
+
+
+
+# Previously - Bootstrap
 
 This needs Jekyll installed - I did it with rbenv, bundler and much cursing.
 
